@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.example.br.com.alura.controller.dto.DetalhesTopicoDto;
+import com.example.br.com.alura.controller.dto.DetalhesDoTopicoDto;
 import com.example.br.com.alura.controller.dto.TopicoDto;
 import com.example.br.com.alura.controller.form.AtualizacaoTopicoForm;
 import com.example.br.com.alura.controller.form.TopicoForm;
@@ -60,11 +60,11 @@ public class TopicosController {
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<DetalhesTopicoDto> detalhar(@PathVariable("id") Long id) {
+	public ResponseEntity<DetalhesDoTopicoDto> detalhar(@PathVariable("id") Long id) {
 
 		Optional<Topico> topico = topicoRepository.findById(id);
 		if (topico.isPresent()) {
-			return ResponseEntity.ok(new DetalhesTopicoDto(topico.get()));
+			return ResponseEntity.ok(new DetalhesDoTopicoDto(topico.get()));
 		}
 
 		return ResponseEntity.notFound().build();
